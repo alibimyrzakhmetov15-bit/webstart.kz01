@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aurora Dev | Мастерство современной веб-разработки</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#003271",
+              "error-dim": "#d73357",
+              "on-secondary-fixed-variant": "#004da8",
+              "surface-container-low": "#13131b",
+              "surface-bright": "#2b2b37",
+              "tertiary-fixed-dim": "#b6a7ee",
+              "secondary": "#699cff",
+              "error-container": "#a70138",
+              "on-background": "#f2effa",
+              "surface-dim": "#0e0d15",
+              "surface": "#0e0d15",
+              "on-primary": "#39008c",
+              "surface-container-high": "#1f1f29",
+              "on-secondary": "#001e4a",
+              "on-error": "#490013",
+              "on-secondary-container": "#f7f7ff",
+              "surface-container-lowest": "#000000",
+              "inverse-primary": "#6e3bd7",
+              "inverse-on-surface": "#55545d",
+              "on-surface": "#f2effa",
+              "secondary-dim": "#699cff",
+              "on-primary-fixed-variant": "#370086",
+              "background": "#0e0d15",
+              "outline-variant": "#484750",
+              "on-primary-fixed": "#000000",
+              "surface-container": "#191922",
+              "surface-container-highest": "#252530",
+              "on-tertiary-fixed-variant": "#463a78",
+              "tertiary-container": "#c3b4fc",
+              "secondary-container": "#005ac2",
+              "secondary-fixed": "#bfd1ff",
+              "inverse-surface": "#fcf8ff",
+              "primary-fixed": "#ae8dff",
+              "tertiary-fixed": "#c3b4fc",
+              "on-tertiary-fixed": "#281a58",
+              "secondary-fixed-dim": "#a9c4ff",
+              "tertiary-dim": "#b6a7ee",
+              "primary": "#ba9eff",
+              "tertiary": "#d1c4ff",
+              "on-surface-variant": "#acaab4",
+              "surface-tint": "#ba9eff",
+              "on-primary-container": "#2b006e",
+              "on-error-container": "#ffb2b9",
+              "primary-container": "#ae8dff",
+              "on-tertiary": "#473a79",
+              "error": "#ff6e84",
+              "primary-fixed-dim": "#a27cff",
+              "outline": "#76747e",
+              "primary-dim": "#8455ef",
+              "on-tertiary-container": "#3d306f",
+              "surface-variant": "#252530"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0e0d15; color: #f2effa; overflow-x: hidden; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border-top: 1px solid rgba(255, 255, 255, 0.1); border-left: 1px solid rgba(255, 255, 255, 0.1); }
+        .aurora-blob { filter: blur(100px); opacity: 0.15; position: absolute; border-radius: 50%; z-index: -1; }
+        .gradient-text { background: linear-gradient(to right, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-gradient { background: linear-gradient(to right, #8b5cf6, #3b82f6); transition: all 0.3s ease; }
+        .btn-gradient:hover { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Header / Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0e0d15]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_8px_32px_rgba(139,92,246,0.06)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+<div class="text-xl font-bold bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] bg-clip-text text-transparent font-headline">Aurora Dev</div>
+<div class="hidden md:flex items-center space-x-8 font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm">
+<a class="text-white border-b-2 border-violet-500 pb-1" href="#hero">Главная</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#features">Преимущества</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#faq">Вопросы</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-slate-400 hover:text-white text-sm font-medium px-4 py-2 transition-all">Войти</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 px-6 overflow-hidden" id="hero">
+<div class="aurora-blob bg-primary w-[500px] h-[500px] -top-20 -left-20"></div>
+<div class="aurora-blob bg-secondary w-[400px] h-[400px] bottom-0 -right-20"></div>
+<div class="max-w-7xl mx-auto text-center relative z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20 mb-8 animate-fade-in">
+<span class="w-2 h-2 rounded-full bg-primary-dim"></span>
+<span class="text-xs font-medium text-on-surface-variant uppercase tracking-widest">Новый поток: Осень 2024</span>
+</div>
+<h1 class="text-6xl md:text-8xl font-headline font-extrabold tracking-tighter mb-8 leading-[1.1]">
+                Освойте искусство <br/><span class="gradient-text">современной веб-разработки</span>
+</h1>
+<p class="max-w-2xl mx-auto text-lg md:text-xl text-on-surface-variant mb-12 font-body leading-relaxed">
+                Пропустите скучные туториалы. Присоединяйтесь к элитной команде разработчиков, где мы создаем высокопроизводительные светящиеся интерфейсы с React, Tailwind и Framer Motion.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="bg-surface-container-highest px-8 py-4 rounded-xl text-lg font-bold w-full sm:w-auto border border-outline-variant/30 hover:bg-surface-bright transition-all">Программа курса</button>
+</div>
+<div class="mt-20 relative max-w-5xl mx-auto">
+<div class="glass-panel p-2 rounded-2xl shadow-2xl">
+<img alt="Предпросмотр панели" class="rounded-xl border border-white/10 w-full object-cover aspect-[16/9]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2mt_hu7kPRZhcb7aLIyrfGmLS28WFWYY5aSayEuLXgPXZqOexRv49zaURh4iEn5xHcYz82SGH_27TkBiHS6qM-MuNnro9p4Pt2jqTZ72THxRLineGUFnoIi025i5ZItOiA3tOG4BU2ikyZgKaeJTfUOK3XsGLAKbTq0fqgPic8_Ct08GFdDIn1ab290tYSggBxrKayG0huPt9r7Rugsk8jRU4cD1j92ejLiktaRCENxd_TbSAv6RyA7HTJyHF1NLOCIuUpchm6Uc"/>
+</div>
+<div class="absolute -top-10 -right-10 glass-panel p-4 rounded-xl hidden md:block animate-bounce" style="animation-duration: 4s;">
+<span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+</div>
+<div class="absolute -bottom-8 -left-8 glass-panel p-4 rounded-xl hidden md:block animate-bounce" style="animation-duration: 5s;">
+<span class="material-symbols-outlined text-secondary text-3xl">layers</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-24 px-6 relative bg-surface-container-low" id="features">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">Создано для нового поколения</h2>
+<p class="text-on-surface-variant text-lg">Каждый модуль разработан, чтобы дать вам лидирующее конкурентное преимущество в индустрии.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-surface-container-highest transition-all group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">devices</span>
+</div>
+<h3 class="text-xl font-bold mb-4 font-headline">Адаптивное мастерство</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Научитесь создавать макеты, которые не просто «работают» на мобильных устройствах, но и ощущаются нативными на любом экране.</p>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-surface-container-highest transition-all group">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary">anchor</span>
+</div>
+<h3 class="text-xl font-bold mb-4 font-headline">Продвинутые React хуки</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Выйдите за рамки useState. Освойте паттерны useEffect, пользовательские хуки и оптимизацию производительности в масштабе.</p>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-surface-container-highest transition-all group">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary">draw</span>
+</div>
+<h3 class="text-xl font-bold mb-4 font-headline">Современный UI/UX дизайн</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Откройте для себя секреты отступов, типографики и теории цвета, используемые дизайнерами мирового уровня.</p>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-surface-container-highest transition-all group">
+<div class="w-12 h-12 rounded-lg bg-primary-dim/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-dim">auto_fix</span>
+</div>
+<h3 class="text-xl font-bold mb-4 font-headline">Framer Motion</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Оживите свой интерфейс с помощью профессиональных микро-взаимодействий и анимаций, привязанных к прокрутке.</p>
+</div>
+<!-- Card 5 -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-surface-container-highest transition-all group">
+<div class="w-12 h-12 rounded-lg bg-secondary-dim/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-dim">database</span>
+</div>
+<h3 class="text-xl font-bold mb-4 font-headline">Основы бэкенда</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Научитесь подключать фронтенд к мощным бэкендам, используя возможности Supabase и Node.js.</p>
+</div>
+<!-- Card 6 -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-surface-container-highest transition-all group">
+<div class="w-12 h-12 rounded-lg bg-error/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-error">search_check</span>
+</div>
+<h3 class="text-xl font-bold mb-4 font-headline">Техническое SEO</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Убедитесь, что ваши прекрасные творения действительно находят поисковые системы и конечные пользователи.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-20 px-6 border-y border-white/5" id="stats-section">
+<div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+<div>
+<div class="text-5xl font-extrabold font-headline gradient-text mb-2 counter" data-target="12000">0</div>
+<div class="text-on-surface-variant uppercase tracking-widest text-xs font-bold">Студентов</div>
+</div>
+<div>
+<div class="text-5xl font-extrabold font-headline gradient-text mb-2 counter" data-target="500">0</div>
+<div class="text-on-surface-variant uppercase tracking-widest text-xs font-bold">Проектов создано</div>
+</div>
+<div>
+<div class="text-5xl font-extrabold font-headline gradient-text mb-2 counter" data-target="150">0</div>
+<div class="text-on-surface-variant uppercase tracking-widest text-xs font-bold">Часов обучения</div>
+</div>
+<div>
+<div class="text-5xl font-extrabold font-headline gradient-text mb-2 counter" data-target="98">0</div>
+<div class="text-on-surface-variant uppercase tracking-widest text-xs font-bold">Успешность</div>
+</div>
+</div>
+</section>
+<!-- How it Works -->
+<section class="py-24 px-6 overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">Процесс обучения</h2>
+<p class="text-on-surface-variant text-lg">Структурированный путь от новичка до ведущего разработчика.</p>
+</div>
+<div class="flex flex-col lg:flex-row justify-between items-center gap-12 relative">
+<div class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline-variant/30 to-transparent -translate-y-1/2 hidden lg:block"></div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-xs">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest border-4 border-surface border-t-primary flex items-center justify-center text-2xl font-bold mb-6 shadow-xl">1</div>
+<h4 class="text-2xl font-bold mb-4 font-headline">Обучение</h4>
+<p class="text-on-surface-variant">Освойте основные фундаментальные принципы с помощью подробных видеолекций и интерактивных лабораторных работ.</p>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-xs">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest border-4 border-surface border-t-secondary flex items-center justify-center text-2xl font-bold mb-6 shadow-xl">2</div>
+<h4 class="text-2xl font-bold mb-4 font-headline">Создание</h4>
+<p class="text-on-surface-variant">Применяйте полученные знания в проектах производственного уровня, которые отлично дополнят ваше портфолио.</p>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-xs">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest border-4 border-surface border-t-tertiary flex items-center justify-center text-2xl font-bold mb-6 shadow-xl">3</div>
+<h4 class="text-2xl font-bold mb-4 font-headline">Запуск</h4>
+<p class="text-on-surface-variant">Развертывайте свои приложения и получайте карьерное наставничество, чтобы получить роль своей мечты.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 px-6 bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-xl">
+<h2 class="text-4xl font-headline font-bold mb-6">Отзывы разработчиков</h2>
+<p class="text-on-surface-variant">Узнайте, почему тысячи разработчиков доверяют Aurora Dev в вопросе своего профессионального роста.</p>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="glass-panel p-8 rounded-3xl">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-lg italic mb-8 leading-relaxed">"Курс просто огонь, все понятно объясняют!"</p>
+<div class="flex items-center gap-4">
+<div>
+<div class="font-bold font-headline">Алмас К.</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="glass-panel p-8 rounded-3xl bg-surface-container-highest/40">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-lg italic mb-8 leading-relaxed">"Научился верстать с нуля за месяц, рекомендую."</p>
+<div class="flex items-center gap-4">
+<div>
+<div class="font-bold font-headline">Сауле М.</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="glass-panel p-8 rounded-3xl">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-lg italic mb-8 leading-relaxed">"Хорошо учит, много практики и никакой воды."</p>
+<div class="flex items-center gap-4">
+<div>
+<div class="font-bold font-headline">Данияр Л.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-24 px-6 bg-surface-container-low" id="faq">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-headline font-bold mb-16 text-center">Часто задаваемые вопросы</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<!-- FAQ 1 -->
+<div class="p-6 rounded-2xl hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-bold font-headline">Нужен ли мне предыдущий опыт в коде?</h4>
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+<p class="text-on-surface-variant text-sm">Хотя базовые знания HTML/CSS будут полезны, мы изучаем всё с самых основ в нашем ознакомительном модуле.</p>
+</div>
+<!-- FAQ 2 -->
+<div class="p-6 rounded-2xl hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-bold font-headline">Содержимое курса записано заранее?</h4>
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+<p class="text-on-surface-variant text-sm">Да, все основные модули записаны. Однако у нас проводятся еженедельные живые сессии для ответов на вопросы.</p>
+</div>
+<!-- FAQ 3 -->
+<div class="p-6 rounded-2xl hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-bold font-headline">Могу ли я получить возврат средств?</h4>
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+<p class="text-on-surface-variant text-sm">Мы предлагаем 14-дневную политику возврата средств без лишних вопросов, если вы не удовлетворены материалом.</p>
+</div>
+<!-- FAQ 4 -->
+<div class="p-6 rounded-2xl hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-bold font-headline">Получу ли я сертификат?</h4>
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+<p class="text-on-surface-variant text-sm">Безусловно! По завершении всех проектов вы получите проверяемый цифровой сертификат об окончании курса.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="py-24 px-6 relative">
+<div class="max-w-5xl mx-auto p-12 md:p-20 rounded-[3rem] bg-gradient-to-br from-primary-dim to-secondary-container relative overflow-hidden text-center">
+<div class="aurora-blob bg-white w-[300px] h-[300px] -top-20 -right-20 opacity-20"></div>
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold mb-8 text-white tracking-tight">
+                Начните свой путь <br/> в кодинге сегодня
+            </h2>
+<p class="text-white/80 text-lg mb-12 max-w-xl mx-auto">
+                Присоединяйтесь к глобальному сообществу разработчиков, создающих светящийся веб. Количество мест в следующем потоке ограничено.
+            </p>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#0e0d15] w-full pt-20 pb-10 border-t border-white/5">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-6 mb-20">
+<div>
+<div class="text-lg font-bold text-white mb-6 font-headline">Продукт</div>
+<ul class="space-y-4 font-['Inter'] text-sm text-slate-400">
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Программа</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Проекты</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Менторство</a></li>
+</ul>
+</div>
+<div>
+<div class="text-lg font-bold text-white mb-6 font-headline">Ресурсы</div>
+<ul class="space-y-4 font-['Inter'] text-sm text-slate-400">
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Блог</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Уроки</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Доки</a></li>
+</ul>
+</div>
+<div>
+<div class="text-lg font-bold text-white mb-6 font-headline">Компания</div>
+<ul class="space-y-4 font-['Inter'] text-sm text-slate-400">
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">О нас</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Приватность</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Контакты</a></li>
+</ul>
+</div>
+<div>
+<div class="text-lg font-bold text-white mb-6 font-headline">Социальные сети</div>
+<ul class="space-y-4 font-['Inter'] text-sm text-slate-400">
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Twitter</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">YouTube</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">Discord</a></li>
+<li><a class="text-slate-500 hover:text-violet-400 hover:translate-x-1 transition-transform duration-200 block" href="#">GitHub</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-xl font-bold bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] bg-clip-text text-transparent font-headline">Aurora Dev</div>
+<div class="font-['Inter'] text-sm text-slate-400">© 2024 Aurora Dev. Создано для яркого веба.</div>
+</div>
+</footer>
+<script>
+        // Intersection Observer for Counters
+        const counters = document.querySelectorAll('.counter');
+        const options = { threshold: 0.5 };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    let startTime = null;
+
+                    const animate = (timestamp) => {
+                        if (!startTime) startTime = timestamp;
+                        const progress = timestamp - startTime;
+                        const current = Math.min(Math.floor((progress / duration) * target), target);
+                        
+                        if (target >= 1000) {
+                            counter.innerText = (current / 1000).toFixed(current % 1000 === 0 ? 0 : 1) + 'K+';
+                        } else if (target === 98) {
+                            counter.innerText = current + '%';
+                        } else {
+                            counter.innerText = current + '+';
+                        }
+
+                        if (progress < duration) {
+                            requestAnimationFrame(animate);
+                        }
+                    };
+                    requestAnimationFrame(animate);
+                    observer.unobserve(counter);
+                }
+            });
+        }, options);
+
+        counters.forEach(counter => counterObserver.observe(counter));
+    </script>
+</body></html>
